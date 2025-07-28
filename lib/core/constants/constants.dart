@@ -20,7 +20,7 @@ class AppColors {
   //Dight Theme Colors
   static const Color darkText = Colors.white;
   static const Color darkHint = Color(0XFF9196A3);
-  static const Color darkInputFill = Color(0XFFF7F7F7);
+  static const Color darkInputFill = Color(0XFF303030);
   static const Color darkBorder = Color(0XFF9196A3);
   static const Color darkFocuseBorder = Colors.brown;
   static const Color darkButton = Color(0XFF5D4037);
