@@ -24,7 +24,7 @@ class ThemeProvider extends ChangeNotifier {
     bool isDark = _brightness == Brightness.dark;
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarColor: isDark ? Colors.black : Colors.white,
+        statusBarColor: Colors.transparent,
         statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
         systemNavigationBarColor: isDark ? Colors.black : Colors.white,
         systemNavigationBarIconBrightness:
