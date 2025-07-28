@@ -11,7 +11,7 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void togleBrightness(Brightness brightness) {
+  void togleBrightness() {
     _brightness =
         (brightness == Brightness.light) ? Brightness.dark : Brightness.light;
     notifyListeners();
