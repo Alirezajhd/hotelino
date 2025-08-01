@@ -1,6 +1,8 @@
 import 'package:Hotelino/bootstrap.dart';
 import 'package:Hotelino/core/theme/app_theme.dart';
 import 'package:Hotelino/core/theme/theme_provider.dart';
+import 'package:Hotelino/features/onboarding/data/repositories/onboarding_repository.dart';
+import 'package:Hotelino/features/onboarding/presentation/onboarding_provider.dart';
 import 'package:Hotelino/routes/appRoutes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +23,9 @@ void main() async {
               (_) => ThemeProvider(
                 WidgetsBinding.instance.platformDispatcher.platformBrightness,
               ),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => OnboardingProvider(OnboardingRepository()),
         ),
       ],
       child: const MyApp(),
