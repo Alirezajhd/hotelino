@@ -1,5 +1,4 @@
 import 'package:Hotelino/features/home/homePage.dart';
-import 'package:Hotelino/features/onboarding/onboardingPage.dart';
 import 'package:flutter/cupertino.dart';
 
 class AppRoutes {
@@ -11,7 +10,6 @@ class AppRoutes {
   static const String profile = '/profile';
 
   static final Map<String, WidgetBuilder> routes = {
-    onboarding : (ctx) => const OnboardingPage(),
-    home : (ctx) => const HomePage(),
+    home: (ctx) => const HomePage(),
   };
 }
