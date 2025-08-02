@@ -1,5 +1,7 @@
 import 'package:Hotelino/features/onboarding/presentation/onboarding_provider.dart';
+import 'package:Hotelino/features/onboarding/presentation/widgets/onboarding_button.dart';
 import 'package:Hotelino/features/onboarding/presentation/widgets/onboarding_item.dart';
+import 'package:Hotelino/routes/appRoutes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -41,9 +43,93 @@ class _OnboardingPageState extends State<OnboardingPage> {
           SizedBox(height: 20),
           IndicatorBuilder(onboardingProvider.currentPage, totalPages, context),
           SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                OnboardingButton(
+                  visible: onboardingProvider.currentPage > 0,
+                  icon: Icons.arrow_back,
+                  backgroundColor: Colors.transparent,
+                  iconColor: Theme.of(context).colorScheme.primary,
+                  onPressed: _previousPage,
+                ),
+                OnboardingButton(
+                  visible:
+                      onboardingProvider.currentPage <
+                      onboardingProvider.onboardingData.length - 1,
+                  icon: Icons.arrow_forward,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  iconColor: Colors.white,
+                  onPressed: _nextPage,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          if (totalPages > 1) ...[
+            AnimatedSwitcher(
+              duration: Duration(milliseconds: 300),
+              transitionBuilder: (child, animation) {
+                return SizeTransition(
+                  sizeFactor: animation,
+                  child: child,
+                  axisAlignment: -1,
+                );
+              },
+              child:
+                  onboardingProvider.currentPage == totalPages - 1
+                      ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushReplacementNamed(
+                                context,
+                                AppRoutes.home,
+                              );
+                            },
+                            child: Text("شروع رزرو هتل ها"),
+                          ),
+                        ),
+                      )
+                      : null,
+            ),
+          ],
         ],
       ),
     );
+  }
+
+  void _nextPage() {
+    final onboardingProvider = Provider.of<OnboardingProvider>(
+      context,
+      listen: false,
+    );
+    if (onboardingProvider.currentPage <
+        onboardingProvider.onboardingData.length - 1) {
+      _pageController.nextPage(
+        duration: Duration(microseconds: 500),
+        curve: Curves.ease,
+      );
+    }
+  }
+
+  void _previousPage() {
+    final onboardingProvider = Provider.of<OnboardingProvider>(
+      context,
+      listen: false,
+    );
+    if (onboardingProvider.currentPage > 0) {
+      _pageController.previousPage(
+        duration: Duration(microseconds: 500),
+        curve: Curves.ease,
+      );
+    }
   }
 
   Widget IndicatorBuilder(
