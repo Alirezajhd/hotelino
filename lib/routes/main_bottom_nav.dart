@@ -95,11 +95,18 @@ class _MainBottomNavState extends State<MainBottomNav> {
       screens: _buildScreens(),
       controller: _controller,
       items: [..._navBarsItems()],
-      onItemSelected: (value) {
-        setState(() {
-          _controller.index = value;
-        });
-      },
+      handleAndroidBackButtonPress: true,
+      hideNavigationBarWhenKeyboardAppears: true,
+      confineToSafeArea: true,
+      stateManagement: true,
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      navBarStyle: NavBarStyle.style7,
+      animationSettings: NavBarAnimationSettings(
+        navBarItemAnimation: ItemAnimationSettings(
+          duration: Duration(milliseconds: 200),
+          curve: Curves.easeIn,
+        ),
+      ),
     );
   }
 }
