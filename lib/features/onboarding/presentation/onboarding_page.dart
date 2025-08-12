@@ -150,7 +150,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             color:
                 currentIndex == index
                     ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).primaryColor.withAlpha(70),
+                    : Theme.of(context).colorScheme.primary.withOpacity(0.3),
 
             shape: BoxShape.circle,
           ),

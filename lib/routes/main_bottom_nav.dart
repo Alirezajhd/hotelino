@@ -1,7 +1,7 @@
 import 'package:Hotelino/routes/test.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class MainBottomNav extends StatefulWidget {
   const MainBottomNav({super.key});
@@ -11,101 +11,53 @@ class MainBottomNav extends StatefulWidget {
 }
 
 class _MainBottomNavState extends State<MainBottomNav> {
-  late PersistentTabController _controller;
+  int _selectedIndex = 0;
+
+  final List<Widget> _screens = [
+    HomeScreen(),
+    BookinPage(),
+    LikePage(),
+    Porfile(),
+  ];
 
   @override
   void initState() {
     super.initState();
-    _controller = PersistentTabController(initialIndex: 0);
   }
-
-  _buildScreens() {
-    return [HomeScreen(), BookinPage(), LikePage(), Porfile()];
-  }
-
-  List<PersistentBottomNavBarItem> _navBarsItems() {
-    return [
-      PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          "assets/images/nav_home.svg",
-          height: 20,
-          width: 20,
-          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
-        ),
-        activeColorPrimary: Theme.of(context).primaryColor,
-        inactiveIcon: SvgPicture.asset(
-          "assets/images/nav_home.svg",
-          height: 20,
-          width: 20,
-          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
-        ),
+  
+  Widget _buildNavItem(String assetPath, bool isActive) {
+    return SvgPicture.asset(
+      assetPath,
+      height: 30,
+      width: 30,
+      colorFilter: ColorFilter.mode(
+        isActive ? Colors.white : Colors.white.withOpacity(0.7),
+        BlendMode.srcIn,
       ),
-      PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          "assets/images/nav_booking.svg",
-          height: 20,
-          width: 20,
-          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
-        ),
-        activeColorPrimary: Theme.of(context).primaryColor,
-        inactiveIcon: SvgPicture.asset(
-          "assets/images/nav_booking.svg",
-          height: 20,
-          width: 20,
-          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
-        ),
-      ),
-      PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          "assets/images/nav_favorite.svg",
-          height: 20,
-          width: 20,
-          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
-        ),
-        activeColorPrimary: Theme.of(context).primaryColor,
-        inactiveIcon: SvgPicture.asset(
-          "assets/images/nav_favorite.svg",
-          height: 20,
-          width: 20,
-          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
-        ),
-      ),
-      PersistentBottomNavBarItem(
-        icon: SvgPicture.asset(
-          "assets/images/nav_profile.svg",
-          height: 20,
-          width: 20,
-          colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
-        ),
-        activeColorPrimary: Theme.of(context).primaryColor,
-        inactiveIcon: SvgPicture.asset(
-          "assets/images/nav_profile.svg",
-          height: 20,
-          width: 20,
-          colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcIn),
-        ),
-      ),
-    ];
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      context,
-      screens: _buildScreens(),
-      controller: _controller,
-      items: _navBarsItems(),
-      handleAndroidBackButtonPress: true,
-      hideNavigationBarWhenKeyboardAppears: true,
-      confineToSafeArea: true,
-      stateManagement: true,
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      navBarStyle: NavBarStyle.style7,
-      animationSettings: NavBarAnimationSettings(
-        navBarItemAnimation: ItemAnimationSettings(
-          duration: Duration(milliseconds: 200),
-          curve: Curves.easeIn,
-        ),
+    return Scaffold(
+      body: _screens[_selectedIndex],
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        color: Theme.of(context).primaryColor,
+        buttonBackgroundColor: Theme.of(context).primaryColor,
+        height: 60,
+        index: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        items: [
+          _buildNavItem("assets/images/nav_home.svg", _selectedIndex == 0),
+          _buildNavItem("assets/images/nav_booking.svg", _selectedIndex == 1),
+          _buildNavItem("assets/images/nav_favorite.svg", _selectedIndex == 2),
+          _buildNavItem("assets/images/nav_profile.svg", _selectedIndex == 3),
+        ],
       ),
     );
   }
