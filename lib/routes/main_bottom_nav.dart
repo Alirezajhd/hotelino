@@ -94,7 +94,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
       context,
       screens: _buildScreens(),
       controller: _controller,
-      items: [..._navBarsItems()],
+      items: _navBarsItems(),
       handleAndroidBackButtonPress: true,
       hideNavigationBarWhenKeyboardAppears: true,
       confineToSafeArea: true,
