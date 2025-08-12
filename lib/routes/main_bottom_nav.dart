@@ -43,8 +43,8 @@ class _MainBottomNavState extends State<MainBottomNav> {
       body: _screens[_selectedIndex],
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Theme.of(context).colorScheme.surface,
-        color: Theme.of(context).primaryColor,
-        buttonBackgroundColor: Theme.of(context).primaryColor,
+        color: Theme.of(context).colorScheme.primaryFixed,
+        buttonBackgroundColor: Theme.of(context).colorScheme.primaryFixed,
         height: 60,
         index: _selectedIndex,
         onTap: (index) {
