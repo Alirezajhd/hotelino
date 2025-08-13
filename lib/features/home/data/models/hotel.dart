@@ -1,7 +1,7 @@
 import 'package:Hotelino/features/home/data/models/bed_type.dart';
 import 'package:Hotelino/features/home/data/models/location.dart';
 
-class Welcome {
+class Hotel {
     final String id;
     final String name;
     final String description;
@@ -17,7 +17,7 @@ class Welcome {
     final BedType bedType;
     final List<String> amenities;
 
-    Welcome({
+    Hotel({
         required this.id,
         required this.name,
         required this.description,
@@ -34,7 +34,7 @@ class Welcome {
         required this.amenities,
     });
 
-    factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+    factory Hotel.fromJson(Map<String, dynamic> json) => Hotel(
         id: json["id"],
         name: json["name"],
         description: json["description"],
