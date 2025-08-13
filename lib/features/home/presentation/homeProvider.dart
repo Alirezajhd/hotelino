@@ -20,4 +20,39 @@ class Homeprovider extends ChangeNotifier {
     _hotels = await _hotelRepositories.fetchHotels();
     notifyListeners();
   }
+
+  // Filter Methods ----------------------------------------------------------------------------------------------
+
+  List<Hotel> getPopularHotels() {
+    return _hotels
+        .where((hotel) => _homePageData.popular.contains(hotel.id))
+        .toList();
+  }
+
+  List<Hotel> getSpecialOffersHotels() {
+    return _hotels
+        .where((hotel) => _homePageData.specialOffers.contains(hotel.id))
+        .toList();
+  }
+
+  List<Hotel> getNewestHotels() {
+    return _hotels
+        .where((hotel) => _homePageData.newest.contains(hotel.id))
+        .toList();
+  }
+
+  // Story Section ------------------------------------------------------------------------------------------------
+
+  List<String> getStoryImages() {
+    final shuffledHotels = List<Hotel>.from(_hotels)..shuffle();
+    return shuffledHotels.take(3).map((hotel) => hotel.images[0]).toList();
+  }
+
+  final List<String> _storyTitles = [
+    "امکانات رفاهی کامل",
+    "اقامت در قلب شهر",
+    "لوکس ترین هتل ها",
+  ];
+
+  List<String> get storyTitles => _storyTitles;
 }
