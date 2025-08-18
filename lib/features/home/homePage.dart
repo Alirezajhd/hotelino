@@ -1,4 +1,5 @@
 import 'package:Hotelino/features/home/presentation/homeProvider.dart';
+import 'package:Hotelino/features/home/widgets/ad_banner.dart';
 import 'package:Hotelino/features/home/widgets/home_app_bar.dart';
 import 'package:Hotelino/features/home/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,12 @@ class HomePage extends StatelessWidget {
       appBar: HomeAppBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: [SizedBox(height: 16), SearchBarWidget()],
+        children: [
+          SizedBox(height: 16),
+          SearchBarWidget(),
+          SizedBox(height: 16),
+          AdBanner(),
+        ],
       ),
     );
   }

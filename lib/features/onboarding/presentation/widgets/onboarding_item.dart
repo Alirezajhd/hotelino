@@ -31,6 +31,7 @@ class OnboardingItem extends StatelessWidget {
           child: Text(
             description,
             textAlign: TextAlign.center,
+            textDirection: TextDirection.rtl,
             style: theme.textTheme.bodyMedium,
           ),
         ),
