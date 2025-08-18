@@ -29,8 +29,8 @@ class _MainBottomNavState extends State<MainBottomNav> {
   Widget _buildNavItem(String assetPath, bool isActive) {
     return SvgPicture.asset(
       assetPath,
-      height: 30,
-      width: 30,
+      height: 22,
+      width: 22,
       colorFilter: ColorFilter.mode(
         isActive ? Colors.white : Colors.white.withOpacity(0.7),
         BlendMode.srcIn,
