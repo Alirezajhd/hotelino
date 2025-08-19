@@ -1,3 +1,4 @@
+import 'package:Hotelino/core/utils/networkImage.dart';
 import 'package:Hotelino/core/utils/price_formater.dart';
 import 'package:Hotelino/features/home/data/models/hotel.dart';
 import 'package:Hotelino/features/home/presentation/favoriteProvider.dart';
@@ -21,7 +22,22 @@ class HotelCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Stack(children: []),
+            Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
+                  ),
+                  child: Image.network(
+                    netwrokUrl(hotel.images[0]),
+                    height: 200,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
