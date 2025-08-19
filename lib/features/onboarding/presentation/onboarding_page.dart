@@ -114,7 +114,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         onboardingProvider.onboardingData.length - 1) {
       _pageController.nextPage(
         duration: Duration(microseconds: 500),
-        curve: Curves.ease,
+        curve: Curves.easeInOut,
       );
     }
   }
@@ -127,7 +127,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     if (onboardingProvider.currentPage > 0) {
       _pageController.previousPage(
         duration: Duration(microseconds: 500),
-        curve: Curves.ease,
+        curve: Curves.easeInOut,
       );
     }
   }

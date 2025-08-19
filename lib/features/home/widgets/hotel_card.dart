@@ -29,7 +29,7 @@ class HotelCard extends StatelessWidget {
                 SizedBox(width: 8),
                 Text(
                   "${hotel.city}, ${hotel.country}",
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.grey.shade700),
                 ),
                 SizedBox(width: 4),
                 Icon(
