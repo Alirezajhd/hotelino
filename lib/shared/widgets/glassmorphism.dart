@@ -2,13 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class Glassmorphism extends StatelessWidget {
+class GlassMorphism extends StatelessWidget {
   final Widget child;
   final double borderRadius;
   final double blur;
   final Color borderColor;
   final Color backgroundColor;
-  const Glassmorphism({
+  const GlassMorphism({
     super.key,
     required this.child,
     this.borderRadius = 20.0,
