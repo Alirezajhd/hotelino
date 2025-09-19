@@ -24,8 +24,18 @@ class HomePage extends StatelessWidget {
             Consumer<Homeprovider>(
               builder: (context, homeProvider, child) {
                 return HotelListSection(
-                  hotels: homeProvider.hotels,
+                  hotels: homeProvider.getPopularHotels(),
                   title: "محبوبترین هتل ها",
+                  onSeeAllPressed: () {},
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+            Consumer<Homeprovider>(
+              builder: (context, homeProvider, child) {
+                return HotelListSection(
+                  hotels: homeProvider.getSpecialOffersHotels(),
+                  title: "پیشنهاد ویژه امروز",
                   onSeeAllPressed: () {},
                 );
               },
