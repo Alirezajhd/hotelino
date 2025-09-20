@@ -19,8 +19,12 @@ class StoryCarousel extends StatefulWidget {
 
 class StoryCarouselState extends State<StoryCarousel> {
   int _currentIndex = 0;
-  late Timer _timer;
+  double _progress = 0.0;
+  Timer? _timer;
   final CarouselSliderController _carouselController = CarouselSliderController();
+
+  static const int storyDurationMs = 5000;
+  static const int tickMs = 50;
 
   @override
   void initState() {
@@ -29,22 +33,27 @@ class StoryCarouselState extends State<StoryCarousel> {
   }
 
   void _startAutoSlide() {
-    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
-      if (_currentIndex < widget.images.length - 1) {
-        _currentIndex++;
-      } else {
-        _currentIndex = 0;
-      }
-
-      _carouselController.animateToPage(_currentIndex);
-      setState(() {});
+    _progress = 0.0;
+    _timer?.cancel();
+    _timer = Timer.periodic(Duration(milliseconds: tickMs), (timer) {
+      setState(() {
+        _progress += tickMs / storyDurationMs;
+        if (_progress >= 1.0) {
+          _progress = 0.0;
+          if (_currentIndex < widget.images.length - 1) {
+            _currentIndex++;
+          } else {
+            _currentIndex = 0;
+          }
+          _carouselController.animateToPage(_currentIndex);
+        }
+      });
     });
   }
 
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
+  void _resetTimer() {
+    _timer?.cancel();
+    _startAutoSlide();
   }
 
   void _nextImage() {
@@ -55,7 +64,9 @@ class StoryCarouselState extends State<StoryCarousel> {
         _currentIndex = 0;
       }
       _carouselController.animateToPage(_currentIndex);
+      _progress = 0.0;
     });
+    _resetTimer();
   }
 
   void _prevImage() {
@@ -66,7 +77,15 @@ class StoryCarouselState extends State<StoryCarousel> {
         _currentIndex = widget.images.length - 1;
       }
       _carouselController.animateToPage(_currentIndex);
+      _progress = 0.0;
     });
+    _resetTimer();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -85,7 +104,9 @@ class StoryCarouselState extends State<StoryCarousel> {
               onPageChanged: (index, reason) {
                 setState(() {
                   _currentIndex = index;
+                  _progress = 0.0;
                 });
+                _resetTimer();
               },
             ),
             items: widget.images.map((imageUrl) {
@@ -101,7 +122,7 @@ class StoryCarouselState extends State<StoryCarousel> {
                           begin: Alignment.bottomCenter,
                           end: Alignment.topCenter,
                           colors: [
-                            Colors.black.withValues(alpha: 0.75),
+                            Colors.black.withOpacity(0.75),
                             Colors.transparent,
                           ],
                         ),
@@ -122,13 +143,32 @@ class StoryCarouselState extends State<StoryCarousel> {
                 children: List.generate(widget.images.length, (index) {
                   return Expanded(
                     child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 500),
+                      duration: const Duration(milliseconds: 200),
                       height: 4,
                       margin: const EdgeInsets.symmetric(horizontal: 2),
                       decoration: BoxDecoration(
-                        color: _currentIndex >= index ? Colors.white : Colors.grey.shade300,
+                        color: Colors.white.withOpacity(0.3),
                         borderRadius: BorderRadius.circular(10),
                       ),
+                      child: index == _currentIndex
+                          ? FractionallySizedBox(
+                              alignment: Alignment.centerLeft,
+                              widthFactor: _progress.clamp(0.0, 1.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            )
+                          : _currentIndex > index
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                )
+                              : SizedBox.shrink(),
                     ),
                   );
                 }),
@@ -153,7 +193,7 @@ class StoryCarouselState extends State<StoryCarousel> {
             child: GestureDetector(
               onTap: _nextImage,
               child: CircleAvatar(
-                backgroundColor: Colors.white.withValues(alpha: 0.6),
+                backgroundColor: Colors.white.withOpacity(0.6),
                 child: const Icon(Icons.chevron_right, color: Colors.black),
               ),
             ),
@@ -164,7 +204,7 @@ class StoryCarouselState extends State<StoryCarousel> {
             child: GestureDetector(
               onTap: _prevImage,
               child: CircleAvatar(
-                backgroundColor: Colors.white.withValues(alpha: 0.6),
+                backgroundColor: Colors.white.withOpacity(0.6),
                 child: const Icon(Icons.chevron_left, color: Colors.black),
               ),
             ),
