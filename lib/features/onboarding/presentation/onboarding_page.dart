@@ -18,7 +18,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   Widget build(BuildContext context) {
     final onboardingProvider = Provider.of<OnboardingProvider>(context);
-
     final onboardingData = onboardingProvider.onboardingData;
     final int totalPages = onboardingData.length;
 
@@ -45,7 +44,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
           SizedBox(height: 20),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
-
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -57,8 +55,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   onPressed: _previousPage,
                 ),
                 OnboardingButton(
-                  visible:
-                      onboardingProvider.currentPage <
+                  visible: onboardingProvider.currentPage <
                       onboardingProvider.onboardingData.length - 1,
                   icon: Icons.arrow_forward,
                   backgroundColor: Theme.of(context).colorScheme.primary,
@@ -71,33 +68,33 @@ class _OnboardingPageState extends State<OnboardingPage> {
           const SizedBox(height: 20),
           if (totalPages > 1) ...[
             AnimatedSwitcher(
-              duration: Duration(milliseconds: 300),
+              duration: Duration(milliseconds: 400),
               transitionBuilder: (child, animation) {
-                return SizeTransition(
-                  sizeFactor: animation,
+                return FadeTransition(
+                  opacity: animation,
                   child: child,
-                  axisAlignment: -1,
                 );
               },
-              child:
-                  onboardingProvider.currentPage == totalPages - 1
-                      ? Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                          child: ElevatedButton(
-                            onPressed: () {
+              child: onboardingProvider.currentPage == totalPages - 1
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (mounted) {
                               Navigator.pushReplacementNamed(
                                 context,
                                 AppRoutes.home,
                               );
-                            },
-                            child: Text("شروع رزرو هتل ها"),
-                          ),
+                            }
+                          },
+                          child: Text("شروع رزرو هتل ها"),
                         ),
-                      )
-                      : null,
+                      ),
+                    )
+                  : SizedBox.shrink(),
             ),
           ],
         ],
@@ -113,7 +110,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     if (onboardingProvider.currentPage <
         onboardingProvider.onboardingData.length - 1) {
       _pageController.nextPage(
-        duration: Duration(microseconds: 500),
+        duration: Duration(milliseconds: 500), // <-- changed to milliseconds
         curve: Curves.easeInOut,
       );
     }
@@ -126,7 +123,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     );
     if (onboardingProvider.currentPage > 0) {
       _pageController.previousPage(
-        duration: Duration(microseconds: 500),
+        duration: Duration(milliseconds: 500), // <-- changed to milliseconds
         curve: Curves.easeInOut,
       );
     }
@@ -141,18 +138,20 @@ class _OnboardingPageState extends State<OnboardingPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
         totalPages,
-        (index) => AnimatedContainer(
+        (index) => AnimatedOpacity(
           duration: Duration(milliseconds: 300),
-          margin: EdgeInsets.symmetric(horizontal: 5),
-          height: currentIndex == index ? 12 : 8,
-          width: currentIndex == index ? 12 : 8,
-          decoration: BoxDecoration(
-            color:
-                currentIndex == index
-                    ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.primary.withOpacity(0.3),
-
-            shape: BoxShape.circle,
+          opacity: currentIndex == index ? 1.0 : 0.5,
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 300),
+            margin: EdgeInsets.symmetric(horizontal: 5),
+            height: currentIndex == index ? 12 : 8,
+            width: currentIndex == index ? 12 : 8,
+            decoration: BoxDecoration(
+              color: currentIndex == index
+                  ? Theme.of(context).colorScheme.primary
+                  : Theme.of(context).colorScheme.primary.withOpacity(0.3),
+              shape: BoxShape.circle,
+            ),
           ),
         ),
       ),
