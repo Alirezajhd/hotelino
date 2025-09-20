@@ -1,7 +1,7 @@
 import 'dart:async';
+import 'package:Hotelino/core/utils/networkImage.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-// import 'package:hotelino/utils/network.dart';
 
 class StoryCarousel extends StatefulWidget {
   final List<String> images;
@@ -94,7 +94,7 @@ class StoryCarouselState extends State<StoryCarousel> {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.network(imageUrl, fit: BoxFit.cover),
+                    Image.network(networkUrl(imageUrl), fit: BoxFit.cover),
                     Container(
                       decoration: BoxDecoration(
                         gradient: LinearGradient(

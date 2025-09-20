@@ -1,5 +1,5 @@
 import 'package:Hotelino/core/constants/constants.dart';
 
-netwrokUrl(String imageUrl) {
+networkUrl(String imageUrl) {
   return AppConstants.baseUrlImage + imageUrl;
 }
