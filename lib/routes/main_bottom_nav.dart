@@ -1,3 +1,4 @@
+import 'package:Hotelino/features/favorite/presentation/favortie_page.dart';
 import 'package:Hotelino/features/home/presentation/homePage.dart';
 import 'package:Hotelino/routes/test.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
   final List<Widget> _screens = [
     HomePage(),
     BookinPage(),
-    LikePage(),
+    FavortiePage(),
     Porfile(),
   ];
 
