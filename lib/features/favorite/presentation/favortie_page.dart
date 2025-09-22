@@ -1,5 +1,7 @@
 import 'package:Hotelino/features/favorite/presentation/widgets/favorite_item.dart';
 import 'package:Hotelino/features/home/presentation/provider/favoriteProvider.dart';
+import 'package:Hotelino/features/home/presentation/provider/profileProvider.dart';
+import 'package:Hotelino/features/home/presentation/widgets/hotel_list_section.dart';
 import 'package:Hotelino/features/home/presentation/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,6 +48,21 @@ class FavortiePage extends StatelessWidget {
                     );
                   },
                 );
+              },
+            ),
+            const SizedBox(height: 16),
+
+            Consumer<Profileprovider>(
+              builder: (context, profileProvider, child) {
+                if (profileProvider.recentlyViewedHotels.isEmpty) {
+                  return const SizedBox.shrink();
+                } else {
+                  return HotelListSection(
+                    title: "بازدید های اخیر",
+                    hotels: profileProvider.recentlyViewedHotels,
+                  );
+                }
+                ;
               },
             ),
           ],
