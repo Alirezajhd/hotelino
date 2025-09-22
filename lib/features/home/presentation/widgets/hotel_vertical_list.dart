@@ -1,5 +1,5 @@
 import 'package:Hotelino/features/home/data/models/hotel.dart';
-import 'package:Hotelino/features/home/widgets/hotel_card_vertical.dart';
+import 'package:Hotelino/features/home/presentation/widgets/hotel_card_vertical.dart';
 import 'package:flutter/material.dart';
 
 class HotelVerticalList extends StatelessWidget {

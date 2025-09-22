@@ -1,4 +1,4 @@
-import 'package:Hotelino/features/onboarding/presentation/onboarding_provider.dart';
+import 'package:Hotelino/features/onboarding/presentation/provider/onboarding_provider.dart';
 import 'package:Hotelino/features/onboarding/presentation/widgets/onboarding_button.dart';
 import 'package:Hotelino/features/onboarding/presentation/widgets/onboarding_item.dart';
 import 'package:Hotelino/routes/appRoutes.dart';

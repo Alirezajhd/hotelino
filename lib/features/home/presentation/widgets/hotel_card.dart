@@ -1,8 +1,8 @@
 import 'package:Hotelino/core/utils/networkImage.dart';
 import 'package:Hotelino/core/utils/price_formater.dart';
 import 'package:Hotelino/features/home/data/models/hotel.dart';
-import 'package:Hotelino/features/home/presentation/favoriteProvider.dart';
-import 'package:Hotelino/features/home/widgets/animated_favorite_button.dart';
+import 'package:Hotelino/features/home/presentation/provider/favoriteProvider.dart';
+import 'package:Hotelino/features/home/presentation/widgets/animated_favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

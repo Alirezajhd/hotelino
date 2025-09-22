@@ -1,7 +1,7 @@
 import 'package:Hotelino/core/utils/networkImage.dart';
 import 'package:Hotelino/core/utils/price_formater.dart';
 import 'package:flutter/material.dart';
-import '../data/models/hotel.dart';
+import '../../data/models/hotel.dart';
 
 class HotelCardVertical extends StatelessWidget {
   final Hotel hotel;

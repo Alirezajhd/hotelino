@@ -1,10 +1,10 @@
-import 'package:Hotelino/features/home/presentation/homeProvider.dart';
-import 'package:Hotelino/features/home/widgets/ad_banner.dart';
-import 'package:Hotelino/features/home/widgets/home_app_bar.dart';
-import 'package:Hotelino/features/home/widgets/hotel_list_section.dart';
-import 'package:Hotelino/features/home/widgets/hotel_vertical_list.dart';
-import 'package:Hotelino/features/home/widgets/search_bar.dart';
-import 'package:Hotelino/features/home/widgets/story_carousel.dart';
+import 'package:Hotelino/features/home/presentation/provider/homeProvider.dart';
+import 'package:Hotelino/features/home/presentation/widgets/ad_banner.dart';
+import 'package:Hotelino/features/home/presentation/widgets/home_app_bar.dart';
+import 'package:Hotelino/features/home/presentation/widgets/hotel_list_section.dart';
+import 'package:Hotelino/features/home/presentation/widgets/hotel_vertical_list.dart';
+import 'package:Hotelino/features/home/presentation/widgets/search_bar.dart';
+import 'package:Hotelino/features/home/presentation/widgets/story_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
