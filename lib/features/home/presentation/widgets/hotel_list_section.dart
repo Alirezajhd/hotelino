@@ -40,7 +40,7 @@ class HotelListSection extends StatelessWidget {
         SizedBox(
           height: 360,
           child: ListView.builder(
-            padding: EdgeInsets.only(right: 16),
+            padding: const EdgeInsets.only(right: 16),
             reverse: true,
             clipBehavior: Clip.none,
             scrollDirection: Axis.horizontal,

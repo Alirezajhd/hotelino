@@ -19,9 +19,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             SearchBarWidget(),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             AdBanner(),
             Consumer<Homeprovider>(
               builder: (context, homeProvider, child) {

@@ -168,7 +168,7 @@ class StoryCarouselState extends State<StoryCarousel> {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                 )
-                              : SizedBox.shrink(),
+                              : const SizedBox.shrink(),
                     ),
                   );
                 }),

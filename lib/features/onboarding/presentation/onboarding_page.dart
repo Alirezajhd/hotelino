@@ -39,11 +39,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
               },
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           IndicatorBuilder(onboardingProvider.currentPage, totalPages, context),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -94,7 +94,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         ),
                       ),
                     )
-                  : SizedBox.shrink(),
+                  : const SizedBox.shrink(),
             ),
           ],
         ],

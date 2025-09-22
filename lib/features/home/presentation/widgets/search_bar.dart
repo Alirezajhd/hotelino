@@ -8,18 +8,18 @@ class SearchBarWidget extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
         decoration: BoxDecoration(
-            color: theme.colorScheme.surfaceContainerLow, borderRadius: BorderRadius.circular(16)),
+          color: theme.colorScheme.surfaceContainerLow,
+          borderRadius: BorderRadius.circular(16),
+        ),
         child: Row(
           children: [
             IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.tune,
-                  color: theme.colorScheme.outline,
-                )),
+              onPressed: () {},
+              icon: Icon(Icons.tune, color: theme.colorScheme.outline),
+            ),
             SizedBox(
               height: 24,
               child: VerticalDivider(
@@ -32,21 +32,20 @@ class SearchBarWidget extends StatelessWidget {
               child: TextField(
                 textDirection: TextDirection.rtl,
                 decoration: InputDecoration(
-                    filled: false,
-                    hintTextDirection: TextDirection.rtl,
-                    hintText: "جستجو در بین هتل ها",
-                    border: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(vertical: 12)),
+                  filled: false,
+                  hintTextDirection: TextDirection.rtl,
+                  hintText: "جستجو در بین هتل ها",
+                  border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                  contentPadding: const EdgeInsets.symmetric(vertical: 12),
+                ),
               ),
             ),
             IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search,
-                  color: theme.colorScheme.outline,
-                ))
+              onPressed: () {},
+              icon: Icon(Icons.search, color: theme.colorScheme.outline),
+            ),
           ],
         ),
       ),

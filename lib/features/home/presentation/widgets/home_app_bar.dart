@@ -21,7 +21,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 children: [
                   IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.notifications_none_outlined,
                       color: Colors.grey,
                     ),
@@ -50,8 +50,8 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 },
                 icon:
                     themeProvider.brightness == Brightness.light
-                        ? Icon(Icons.dark_mode)
-                        : Icon(Icons.light_mode),
+                        ? const Icon(Icons.dark_mode)
+                        : const Icon(Icons.light_mode),
                 color: Colors.grey,
               ),
             ],

@@ -53,12 +53,12 @@ class HotelCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     children: [
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       Icon(Icons.star, color: Colors.amber, size: 20),
-                      SizedBox(width: 4),
+                      const SizedBox(width: 4),
                       Text(
                         "${hotel.rating} (${formatPrice(hotel.reviewCount)})",
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -71,30 +71,30 @@ class HotelCard extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                     ],
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       Text(
                         "${hotel.city}, ${hotel.country}",
                         style: TextStyle(color: Colors.grey.shade700),
                       ),
-                      SizedBox(width: 4),
+                      const SizedBox(width: 4),
                       Icon(
                         Icons.location_on,
                         color: Theme.of(context).colorScheme.primary,
                         size: 18,
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                     ],
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Padding(
-                    padding: EdgeInsets.only(right: 8),
+                    padding: const EdgeInsets.only(right: 8),
                     child: Text(
                       "از ${formatPrice(hotel.pricePerNight)} / شب",
                       style: TextStyle(
@@ -103,9 +103,9 @@ class HotelCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Padding(
-                    padding: EdgeInsets.only(right: 8, left: 8),
+                    padding: const EdgeInsets.only(right: 8, left: 8),
                     child: SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -117,7 +117,7 @@ class HotelCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                 ],
               ),
             ),
