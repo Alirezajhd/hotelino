@@ -26,9 +26,9 @@ class _MainBottomNavState extends State<MainBottomNav> {
   void initState() {
     super.initState();
   }
-  
-  Widget _buildNavItem(String assetPath, bool isActive) {
-    return SvgPicture.asset(
+
+  Widget _buildNavItem(String assetPath, bool isActive, {bool isFavorite = false}) {
+    Widget icon = SvgPicture.asset(
       assetPath,
       height: 22,
       width: 22,
@@ -37,29 +37,45 @@ class _MainBottomNavState extends State<MainBottomNav> {
         BlendMode.srcIn,
       ),
     );
+
+    // Move heart icon down a bit when selected
+    if (isFavorite && isActive) {
+      icon = Transform.translate(
+        offset: const Offset(0, 2.5),
+        child: icon,
+      );
+    }
+    return icon;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_selectedIndex],
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        color: Theme.of(context).colorScheme.primaryFixed,
-        buttonBackgroundColor: Theme.of(context).colorScheme.primaryFixed,
-        height: 60,
-        index: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        items: [
-          _buildNavItem("assets/images/nav_home.svg", _selectedIndex == 0),
-          _buildNavItem("assets/images/nav_booking.svg", _selectedIndex == 1),
-          _buildNavItem("assets/images/nav_favorite.svg", _selectedIndex == 2),
-          _buildNavItem("assets/images/nav_profile.svg", _selectedIndex == 3),
-        ],
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(top: 8),
+        child: CurvedNavigationBar(
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          color: Theme.of(context).colorScheme.primaryFixed,
+          buttonBackgroundColor: Theme.of(context).colorScheme.primaryFixed,
+          height: 60,
+          index: _selectedIndex,
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          items: [
+            _buildNavItem("assets/images/nav_home.svg", _selectedIndex == 0),
+            _buildNavItem("assets/images/nav_booking.svg", _selectedIndex == 1),
+            _buildNavItem(
+              "assets/images/nav_favorite.svg",
+              _selectedIndex == 2,
+              isFavorite: true,
+            ),
+            _buildNavItem("assets/images/nav_profile.svg", _selectedIndex == 3),
+          ],
+        ),
       ),
     );
   }
