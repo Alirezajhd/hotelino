@@ -35,7 +35,7 @@ class StoryCarouselState extends State<StoryCarousel> {
   void _startAutoSlide() {
     _progress = 0.0;
     _timer?.cancel();
-    _timer = Timer.periodic(Duration(milliseconds: tickMs), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: tickMs), (timer) {
       setState(() {
         _progress += tickMs / storyDurationMs;
         if (_progress >= 1.0) {

@@ -14,15 +14,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeAppBar(),
+      appBar: const HomeAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             const SizedBox(height: 16),
-            SearchBarWidget(),
+            const SearchBarWidget(),
             const SizedBox(height: 16),
-            AdBanner(),
+            const AdBanner(),
             Consumer<Homeprovider>(
               builder: (context, homeProvider, child) {
                 return HotelListSection(

@@ -49,7 +49,7 @@ class AdBanner extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text("همه هتل ها"),
+                  child: const Text("همه هتل ها"),
                 ),
                 const SizedBox(height: 8),
               ],

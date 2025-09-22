@@ -68,7 +68,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           const SizedBox(height: 20),
           if (totalPages > 1) ...[
             AnimatedSwitcher(
-              duration: Duration(milliseconds: 400),
+              duration: const Duration(milliseconds: 400),
               transitionBuilder: (child, animation) {
                 return FadeTransition(
                   opacity: animation,
@@ -90,7 +90,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               );
                             }
                           },
-                          child: Text("شروع رزرو هتل ها"),
+                          child: const Text("شروع رزرو هتل ها"),
                         ),
                       ),
                     )
@@ -110,7 +110,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     if (onboardingProvider.currentPage <
         onboardingProvider.onboardingData.length - 1) {
       _pageController.nextPage(
-        duration: Duration(milliseconds: 500), // <-- changed to milliseconds
+        duration: const Duration(milliseconds: 500), // <-- changed to milliseconds
         curve: Curves.easeInOut,
       );
     }
@@ -123,7 +123,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     );
     if (onboardingProvider.currentPage > 0) {
       _pageController.previousPage(
-        duration: Duration(milliseconds: 500), // <-- changed to milliseconds
+        duration: const Duration(milliseconds: 500), // <-- changed to milliseconds
         curve: Curves.easeInOut,
       );
     }
@@ -139,11 +139,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
       children: List.generate(
         totalPages,
         (index) => AnimatedOpacity(
-          duration: Duration(milliseconds: 300),
+          duration: const Duration(milliseconds: 300),
           opacity: currentIndex == index ? 1.0 : 0.5,
           child: AnimatedContainer(
-            duration: Duration(milliseconds: 300),
-            margin: EdgeInsets.symmetric(horizontal: 5),
+            duration: const Duration(milliseconds: 300),
+            margin: const EdgeInsets.symmetric(horizontal: 5),
             height: currentIndex == index ? 12 : 8,
             width: currentIndex == index ? 12 : 8,
             decoration: BoxDecoration(

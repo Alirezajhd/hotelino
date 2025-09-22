@@ -7,7 +7,7 @@ class HotelListSection extends StatelessWidget {
   final List<Hotel> hotels;
   final VoidCallback? onSeeAllPressed;
 
-  HotelListSection({
+  const HotelListSection({
     super.key,
     required this.title,
     required this.hotels,

@@ -39,7 +39,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                               radius: 4,
                             ),
                           )
-                          : SizedBox();
+                          : const SizedBox();
                     },
                   ),
                 ],
@@ -83,5 +83,5 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(56);
+  Size get preferredSize => const Size.fromHeight(56);
 }

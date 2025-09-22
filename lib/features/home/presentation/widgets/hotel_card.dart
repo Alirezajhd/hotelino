@@ -19,14 +19,14 @@ class HotelCard extends StatelessWidget {
       width: 280,
       child: Card(
         elevation: 4,
-        margin: EdgeInsets.all(0),
+        margin: const EdgeInsets.all(0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
                   ),
@@ -57,16 +57,16 @@ class HotelCard extends StatelessWidget {
                   Row(
                     children: [
                       const SizedBox(width: 8),
-                      Icon(Icons.star, color: Colors.amber, size: 20),
+                      const Icon(Icons.star, color: Colors.amber, size: 20),
                       const SizedBox(width: 4),
                       Text(
                         "${hotel.rating} (${formatPrice(hotel.reviewCount)})",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Text(
                         hotel.name,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -97,7 +97,7 @@ class HotelCard extends StatelessWidget {
                     padding: const EdgeInsets.only(right: 8),
                     child: Text(
                       "از ${formatPrice(hotel.pricePerNight)} / شب",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -110,7 +110,7 @@ class HotelCard extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           "مشاهده و انتخاب اتاق",
                           style: TextStyle(color: Colors.white),
                         ),
