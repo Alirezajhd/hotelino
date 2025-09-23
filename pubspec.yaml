@@ -42,6 +42,7 @@ dependencies:
   curved_navigation_bar: ^1.0.6
   intl: ^0.20.2
   carousel_slider: ^5.1.1
+  persian_datetime_picker: ^3.1.0
 
 dev_dependencies:
   flutter_test:
