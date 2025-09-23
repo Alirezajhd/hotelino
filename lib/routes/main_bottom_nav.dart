@@ -1,3 +1,4 @@
+import 'package:Hotelino/features/booking/presentation/booking_page.dart';
 import 'package:Hotelino/features/favorite/presentation/favortie_page.dart';
 import 'package:Hotelino/features/home/presentation/homePage.dart';
 import 'package:Hotelino/routes/test.dart';
@@ -17,7 +18,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
 
   final List<Widget> _screens = [
     HomePage(),
-    BookinPage(),
+    BookingPage(),
     FavortiePage(),
     Porfile(),
   ];
@@ -27,7 +28,11 @@ class _MainBottomNavState extends State<MainBottomNav> {
     super.initState();
   }
 
-  Widget _buildNavItem(String assetPath, bool isActive, {bool isFavorite = false}) {
+  Widget _buildNavItem(
+    String assetPath,
+    bool isActive, {
+    bool isFavorite = false,
+  }) {
     Widget icon = SvgPicture.asset(
       assetPath,
       height: 22,
@@ -40,10 +45,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
 
     // Move heart icon down a bit when selected
     if (isFavorite && isActive) {
-      icon = Transform.translate(
-        offset: const Offset(0, 2.5),
-        child: icon,
-      );
+      icon = Transform.translate(offset: const Offset(0, 2.5), child: icon);
     }
     return icon;
   }
