@@ -1,19 +1,19 @@
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
 class BookingModel {
-  String FullName;
-  String Destination;
+  String fullName;
+  String destination;
   JalaliRange? checkInOutRange;
 
-  String NumberOfGusts;
+  String numberOfGusts;
   String phoneNumber;
 
   
   BookingModel({
-    this.FullName = '',
-    this.Destination = '',
+    this.fullName = '',
+    this.destination = '',
     this.checkInOutRange,
-    this.NumberOfGusts = '',
+    this.numberOfGusts = '',
     this.phoneNumber = '',
   });
 }

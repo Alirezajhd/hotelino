@@ -7,12 +7,12 @@ class BookingProvider with ChangeNotifier {
   BookingModel get booking => _booking;
 
   void setName(String value) {
-    _booking.FullName = value;
+    _booking.fullName = value;
     notifyListeners();
   }
 
   void setDestination(String value) {
-    _booking.Destination = value;
+    _booking.destination = value;
     notifyListeners();
   }
 
@@ -27,7 +27,7 @@ class BookingProvider with ChangeNotifier {
   }
 
   void setNumberOfGusts(String value) {
-    _booking.NumberOfGusts = value;
+    _booking.numberOfGusts = value;
     notifyListeners();
   }
 }
