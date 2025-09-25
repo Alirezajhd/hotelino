@@ -1,6 +1,7 @@
 import 'package:Hotelino/bootstrap.dart';
 import 'package:Hotelino/core/theme/app_theme.dart';
 import 'package:Hotelino/core/theme/theme_provider.dart';
+import 'package:Hotelino/features/booking/presentation/booking_provider.dart';
 import 'package:Hotelino/features/home/data/repositories/hotel_repositories.dart';
 import 'package:Hotelino/features/home/data/repositories/profile_repositories.dart';
 import 'package:Hotelino/features/home/presentation/provider/favoriteProvider.dart';
@@ -35,6 +36,7 @@ void main() async {
                 WidgetsBinding.instance.platformDispatcher.platformBrightness,
               ),
         ),
+        ChangeNotifierProvider(create: (_) => BookingProvider()),
         ChangeNotifierProvider(
           create: (_) => OnboardingProvider(OnboardingRepository()),
         ),
@@ -87,14 +89,11 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     return Consumer<ThemeProvider>(
       builder: (context, themeModeProvider, child) {
         return MaterialApp(
-          locale: const Locale("fa","IR"),
-          supportedLocales: const [
-            Locale("fa","IR"),
-            Locale("en","US"),
-          ],
+          locale: const Locale("fa", "IR"),
+          supportedLocales: const [Locale("fa", "IR"), Locale("en", "US")],
           localizationsDelegates: const [
             PersianMaterialLocalizations.delegate,
-            PersianCupertinoLocalizations.delegate
+            PersianCupertinoLocalizations.delegate,
           ],
           title: "Hotelino",
           debugShowCheckedModeBanner: false,
