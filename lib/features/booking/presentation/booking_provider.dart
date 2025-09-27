@@ -16,7 +16,7 @@ class BookingProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setRange(JalaliRange value) {
+  void setRangeDate(JalaliRange value) {
     _booking.checkInOutRange = value;
     notifyListeners();
   }

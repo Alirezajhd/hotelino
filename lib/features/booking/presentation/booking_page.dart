@@ -1,5 +1,6 @@
 import 'package:Hotelino/features/booking/presentation/booking_provider.dart';
 import 'package:Hotelino/features/booking/presentation/widgets/booking_form_field.dart';
+import 'package:Hotelino/features/booking/presentation/widgets/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +15,7 @@ class _BookingPageState extends State<BookingPage> {
   final _formKey = GlobalKey<FormState>();
 
   void resetForm() {
-    Future.delayed(Duration(milliseconds: 100));
+    Future.delayed(const Duration(milliseconds: 100));
     _formKey.currentState?.reset();
   }
 
@@ -56,7 +57,7 @@ class _BookingPageState extends State<BookingPage> {
                         }
                       },
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     BookingFormField(
                       title: 'مقصد',
                       hint: 'مقصد خود را وارد کنید...',
@@ -75,7 +76,24 @@ class _BookingPageState extends State<BookingPage> {
                         }
                       },
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
+                    DatePickerField(
+                      title: 'تاریخ اقامت',
+                      hint: 'بازه زمانی اقامت را مشخص کنید',
+                      initialValue: bookingProvider.booking.checkInOutRange,
+                      validator: (value) {
+                        if (value == null) {
+                          return 'لطفاً بازه‌ی زمانی را انتخاب کنید';
+                        }
+                        return null;
+                      },
+                      onSaved: (newValue) {
+                        if (newValue != null) {
+                          bookingProvider.setRangeDate(newValue);
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 8),
                   ],
                 ),
               );
