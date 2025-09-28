@@ -2,6 +2,7 @@ import 'package:Hotelino/features/booking/presentation/booking_provider.dart';
 import 'package:Hotelino/features/booking/presentation/widgets/booking_form_field.dart';
 import 'package:Hotelino/features/booking/presentation/widgets/date_time_picker.dart';
 import 'package:Hotelino/features/booking/presentation/widgets/number_text_field.dart';
+import 'package:Hotelino/features/booking/presentation/widgets/terms_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -128,6 +129,8 @@ class _BookingPageState extends State<BookingPage> {
                         }
                       },
                     ),
+                    const SizedBox(height: 8),
+                    TermsWidget(),
                   ],
                 ),
               );
