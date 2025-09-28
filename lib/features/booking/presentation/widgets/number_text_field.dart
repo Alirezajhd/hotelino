@@ -3,8 +3,7 @@ import 'package:Hotelino/features/booking/data/model/country.dart';
 import 'package:flutter/material.dart';
 
 class NumberFormField extends StatefulWidget {
-  static final GlobalKey<NumberFormFieldState> numberFieldKey =
-      GlobalKey<NumberFormFieldState>();
+  static final GlobalKey<NumberFormFieldState> numberFieldKey = GlobalKey<NumberFormFieldState>();
 
   final String initialValue;
   final FormFieldValidator<String>? validator;
@@ -44,11 +43,15 @@ class NumberFormFieldState extends State<NumberFormField> {
     super.initState();
     selectedCountry = countries[0];
     _controller.text = widget.initialValue;
-    _focusNode.addListener(() {
+
+    _controller.addListener(() {
       setState(() {
-        _textAlign =
-            _controller.text.isEmpty ? TextAlign.right : TextAlign.left;
+        _textAlign = _controller.text.isEmpty ? TextAlign.right : TextAlign.left;
       });
+    });
+
+    _focusNode.addListener(() {
+      setState(() {});
     });
   }
 
@@ -77,17 +80,19 @@ class NumberFormFieldState extends State<NumberFormField> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text("شماره تماس", style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              "شماره تماس",
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: 8),
             SizedBox(
               height: 56,
               child: Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color:
-                        field.hasError
-                            ? Theme.of(context).colorScheme.error
-                            : _focusNode.hasFocus
+                    color: field.hasError
+                        ? Theme.of(context).colorScheme.error
+                        : _focusNode.hasFocus
                             ? Theme.of(context).colorScheme.primary
                             : AppColors.lightBorder,
                     width: field.hasError ? 1 : 1.5,
@@ -102,33 +107,32 @@ class NumberFormFieldState extends State<NumberFormField> {
                       child: DropdownButton<Country>(
                         value: selectedCountry,
                         isExpanded: true,
-                        items:
-                            countries.map((Country country) {
-                              return DropdownMenuItem<Country>(
-                                value: country,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Image.network(
-                                      'https://flagsapi.com/${country.countryCode}/shiny/64.png',
-                                      width: 28,
-                                      height: 28,
-                                      errorBuilder:
-                                          (context, error, stackTrace) =>
-                                              const Icon(Icons.flag, size: 28),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Text(
-                                      country.name,
-                                      style: const TextStyle(fontSize: 14),
-                                    ),
-                                    const SizedBox(width: 8),
-                                    Text(country.dialCode),
-                                  ],
+                        items: countries.map((Country country) {
+                          return DropdownMenuItem<Country>(
+                            value: country,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Image.network(
+                                  'https://flagsapi.com/${country.countryCode}/shiny/64.png',
+                                  width: 28,
+                                  height: 28,
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      const Icon(Icons.flag, size: 28),
                                 ),
-                              );
-                            }).toList(),
+                                const SizedBox(width: 8),
+                                Text(
+                                  country.name,
+                                  style: const TextStyle(fontSize: 14),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  country.dialCode,
+                                ),
+                              ],
+                            ),
+                          );
+                        }).toList(),
                         onChanged: (Country? newCountry) {
                           if (newCountry != null) {
                             setState(() {
@@ -167,10 +171,7 @@ class NumberFormFieldState extends State<NumberFormField> {
                 padding: const EdgeInsets.only(top: 8, right: 12),
                 child: Text(
                   field.errorText ?? '',
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.error,
-                    fontSize: 12,
-                  ),
+                  style: TextStyle(color: Theme.of(context).colorScheme.error, fontSize: 12),
                 ),
               ),
           ],
