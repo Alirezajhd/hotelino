@@ -5,7 +5,7 @@ class BookingModel {
   String destination;
   JalaliRange? checkInOutRange;
 
-  String numberOfGusts;
+  String numberOfGuests;
   String phoneNumber;
 
   
@@ -13,7 +13,7 @@ class BookingModel {
     this.fullName = '',
     this.destination = '',
     this.checkInOutRange,
-    this.numberOfGusts = '',
+    this.numberOfGuests = '',
     this.phoneNumber = '',
   });
 }

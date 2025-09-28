@@ -26,8 +26,8 @@ class BookingProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setNumberOfGusts(String value) {
-    _booking.numberOfGusts = value;
+  void setNumberOfGuests(String value) {
+    _booking.numberOfGuests = value;
     notifyListeners();
   }
 }
