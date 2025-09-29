@@ -18,7 +18,14 @@ class TermsWidget extends StatefulWidget {
 }
 
 class _TermsWidgetState extends State<TermsWidget> {
-  bool isChecked = false;
+  late bool isChecked;
+
+  @override
+  void initState() {
+    super.initState();
+    isChecked = widget.initialValue;
+  }
+
   @override
   Widget build(BuildContext context) {
     return FormField<bool>(
@@ -26,6 +33,9 @@ class _TermsWidgetState extends State<TermsWidget> {
       onSaved: widget.onSaved,
       validator: widget.validator,
       builder: (FormFieldState<bool> field) {
+        if (field.value != isChecked) {
+          field.didChange(isChecked);
+        }
         return Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -61,6 +71,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                   onChanged: (value) {
                     setState(() {
                       isChecked = value ?? false;
+                      field.didChange(isChecked);
                     });
                   },
                   side: BorderSide(
