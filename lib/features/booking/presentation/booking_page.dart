@@ -130,7 +130,26 @@ class _BookingPageState extends State<BookingPage> {
                       },
                     ),
                     const SizedBox(height: 8),
-                    TermsWidget(),
+                    const TermsWidget(),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'درخواست رزرو با موفقیت ثبت شد! 🎉',
+                                  textDirection: TextDirection.rtl,
+                                ),
+                              ),
+                            );
+                          }
+                          ;
+                        },
+                        child: const Text("جستجو هتل ها"),
+                      ),
+                    ),
                   ],
                 ),
               );
