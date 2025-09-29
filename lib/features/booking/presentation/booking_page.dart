@@ -47,7 +47,7 @@ class _BookingPageState extends State<BookingPage> {
                       keyboardType: TextInputType.text,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'لطفا نام خود را کامل بنویسید';
+                          return 'لطفا نام خود را کامل بنویسید.';
                         }
 
                         return null;
@@ -66,7 +66,7 @@ class _BookingPageState extends State<BookingPage> {
                       keyboardType: TextInputType.text,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'لطفا مقصد خود را مشخص کنید';
+                          return 'لطفا مقصد خود را مشخص کنید.';
                         }
 
                         return null;
@@ -85,7 +85,7 @@ class _BookingPageState extends State<BookingPage> {
                       initialValue: bookingProvider.booking.checkInOutRange,
                       validator: (value) {
                         if (value == null) {
-                          return 'لطفاً بازه‌ی زمانی را انتخاب کنید';
+                          return 'لطفاً بازه‌ی زمانی را انتخاب کنید.';
                         }
                         return null;
                       },
@@ -102,7 +102,7 @@ class _BookingPageState extends State<BookingPage> {
                       keyboardType: TextInputType.number,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'لطفا تعداد نفرات را مشخص کنید';
+                          return 'لطفا تعداد نفرات را مشخص کنید.';
                         }
 
                         return null;
@@ -119,7 +119,7 @@ class _BookingPageState extends State<BookingPage> {
                       initialValue: bookingProvider.booking.phoneNumber,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'لطفا شماره را به درستی وارد کنید';
+                          return '.لطفا شماره را به درستی وارد کنید';
                         }
                         return null;
                       },
@@ -130,7 +130,16 @@ class _BookingPageState extends State<BookingPage> {
                       },
                     ),
                     const SizedBox(height: 8),
-                    const TermsWidget(),
+                    TermsWidget(
+                      initialValue: false,
+                      onSaved: (newValue) {},
+                      validator: (value) {
+                        if (value == null || value == false) {
+                          return '.لطفا قوانین برنامه را تایید کنید';
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 8),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(

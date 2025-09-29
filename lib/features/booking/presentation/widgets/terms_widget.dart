@@ -27,6 +27,7 @@ class _TermsWidgetState extends State<TermsWidget> {
       validator: widget.validator,
       builder: (FormFieldState<bool> field) {
         return Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -77,13 +78,16 @@ class _TermsWidgetState extends State<TermsWidget> {
                     borderRadius: BorderRadius.circular(4),
                   ),
                   activeColor: Theme.of(context).colorScheme.primary,
-                  visualDensity: const VisualDensity(horizontal: -4),
+                  visualDensity: const VisualDensity(
+                    horizontal: -4,
+                    vertical: -4,
+                  ),
                 ),
               ],
             ),
             if (field.hasError)
               Padding(
-                padding: const EdgeInsets.only(right: 12),
+                padding: const EdgeInsets.only(right: 12, bottom: 8),
                 child: Text(
                   field.errorText ?? '',
                   style: TextStyle(
