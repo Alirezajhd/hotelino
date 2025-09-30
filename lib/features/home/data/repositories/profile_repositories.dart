@@ -10,7 +10,7 @@ class ProfileRepository {
       email: "alirezaJahed30@gmail.com",
       avatarUrl: "https://dunijet.ir/content/projects/hotelino/profile_pic.png",
       phoneNumber: "+989123456789",
-      location: "تهران، ایران",
+      location: "شیراز، ایران",
       bio: "عاشق سفر و تجربه هتل‌های لاکچری 🌍✨",
       bookings: 12,
       favorites: 5,

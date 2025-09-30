@@ -1,7 +1,7 @@
 import 'package:Hotelino/features/booking/presentation/booking_page.dart';
 import 'package:Hotelino/features/favorite/presentation/favortie_page.dart';
 import 'package:Hotelino/features/home/presentation/homePage.dart';
-import 'package:Hotelino/routes/test.dart';
+import 'package:Hotelino/features/profile/presentation/widgets/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -20,7 +20,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
     HomePage(),
     BookingPage(),
     FavortiePage(),
-    Porfile(),
+    ProfilePage(),
   ];
 
   @override
