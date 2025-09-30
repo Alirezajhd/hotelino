@@ -8,7 +8,7 @@ class ProfileRepository {
       id: "7954862145",
       name: "علیرضا جاهدی",
       email: "alirezaJahed30@gmail.com",
-      avatarUrl: "https://dunijet.ir/content/projects/hotelino/profile_pic.png",
+      avatarUrl: "assets/images/Aj_light_theme.png",
       phoneNumber: "+989123456789",
       location: "شیراز، ایران",
       bio: "عاشق سفر و تجربه هتل‌های لاکچری 🌍✨",
