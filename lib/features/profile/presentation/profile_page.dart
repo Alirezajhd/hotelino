@@ -46,7 +46,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         backgroundImage:
                             imageFile != null
                                 ? FileImage(imageFile!)
-                                : NetworkImage(profile.avatarUrl),
+                                : AssetImage(
+                                  Theme.of(context).brightness == Brightness.dark
+                                      ? 'assets/images/Aj_light_theme.png'
+                                      : 'assets/images/Aj_dark_theme.png',
+                                ),
                       ),
                       Positioned(
                         bottom: 0,
