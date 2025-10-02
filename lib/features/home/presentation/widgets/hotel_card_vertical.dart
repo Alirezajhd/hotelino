@@ -12,12 +12,7 @@ class HotelCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // PersistentNavBarNavigator.pushNewScreen(
-        //   context,
-        //   withNavBar: true,
-        //   screen: HotelDetailPage(hotelId: hotel.id),
-        //   pageTransitionAnimation: PageTransitionAnimation.cupertino,
-        // );
+        Navigator.pushNamed(context, '/hotel-detail', arguments: hotel.id);
       },
       child: Container(
         height: 150,
@@ -33,7 +28,9 @@ class HotelCardVertical extends StatelessWidget {
               )
             else
               BoxShadow(
-                color: Theme.of(context).colorScheme.surfaceContainerHigh.withValues(alpha: 1),
+                color: Theme.of(
+                  context,
+                ).colorScheme.surfaceContainerHigh.withValues(alpha: 1),
                 blurRadius: 6,
                 spreadRadius: 2,
               ),
@@ -46,7 +43,10 @@ class HotelCardVertical extends StatelessWidget {
               padding: const EdgeInsets.only(left: 12, bottom: 12),
               child: ElevatedButton(
                 onPressed: () {},
-                child: const Text("رزرو اتاق", style: TextStyle(color: Colors.white)),
+                child: const Text(
+                  "رزرو اتاق",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
             Expanded(
@@ -56,16 +56,24 @@ class HotelCardVertical extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     const SizedBox(height: 4),
-                    Text(hotel.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                    Text(
+                      hotel.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                     const SizedBox(height: 4),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          "${hotel.city}, ${hotel.country}",
-                        ),
+                        Text("${hotel.city}, ${hotel.country}"),
                         const SizedBox(width: 5),
-                        Icon(Icons.location_on, color: Theme.of(context).colorScheme.primary, size: 18),
+                        Icon(
+                          Icons.location_on,
+                          color: Theme.of(context).colorScheme.primary,
+                          size: 18,
+                        ),
                       ],
                     ),
                     const SizedBox(height: 4),
@@ -78,12 +86,18 @@ class HotelCardVertical extends StatelessWidget {
                           textDirection: TextDirection.rtl,
                         ),
                         const SizedBox(width: 5),
-                        Icon(Icons.bed, color: Theme.of(context).colorScheme.primary, size: 18),
+                        Icon(
+                          Icons.bed,
+                          color: Theme.of(context).colorScheme.primary,
+                          size: 18,
+                        ),
                       ],
                     ),
                     const SizedBox(height: 4),
-                    Text("از ${formatPrice(hotel.pricePerNight)} / شب",
-                        style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Text(
+                      "از ${formatPrice(hotel.pricePerNight)} / شب",
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                     const SizedBox(height: 4),
                   ],
                 ),
