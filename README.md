@@ -167,9 +167,12 @@ Project Link: [https://github.com/Alirezajhd/hotelino](https://github.com/Alirez
 
 ## Acknowledgments 🙏
 
-- Flutter team for the amazing framework
-- All contributors who helped with this project
+- **[Dunijet](https://dunijet.ir)** - Special thanks for the excellent Flutter tutorial and guidance in creating this project
 - Design inspiration from modern hotel booking apps
+
+---
+
+Made with ❤️ using Flutter
 
 ---
 
