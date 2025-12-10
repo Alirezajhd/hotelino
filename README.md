@@ -67,50 +67,6 @@ lib/
    flutter run
    ```
 
-## Configuration ⚙️
-
-### Routes
-
-The app uses named routes defined in `lib/routes/appRoutes.dart`:
-
-```dart
-'/hotel-detail': (context) => HotelDetailPage(
-  hotelId: ModalRoute.of(context)!.settings.arguments as String,
-),
-```
-
-### Theme
-
-Toggle between light and dark themes using the `ThemeProvider`:
-
-```dart
-Provider.of<ThemeProvider>(context).toggleBrightness();
-```
-
-## Key Features Implementation 🔑
-
-### Hotel Card Navigation
-
-```dart
-GestureDetector(
-  onTap: () {
-    Navigator.pushNamed(context, '/hotel-detail', arguments: hotel.id);
-  },
-  child: HotelCard(hotel: hotel),
-)
-```
-
-### Favorite Management
-
-```dart
-final favoriteProvider = Provider.of<FavoriteItemProvider>(context);
-favoriteProvider.toggleFavorite(hotelId);
-```
-
-### Image Caching
-
-Uses `AssetImage` for efficient caching of local images. For network images, consider adding `cached_network_image` package.
-
 ## Dependencies 📦
 
 ```yaml
@@ -148,20 +104,9 @@ The app uses **Provider** for state management with the following providers:
 - `OnboardingProvider` - Onboarding flow
 - `BookingProvider` - Booking form state
 
-## Contributing 🤝
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
 ## Contact 📧
 
-Alireza Jahedi 
+Alireza Jahedi
 
 Project Link: [https://github.com/Alirezajhd/hotelino](https://github.com/Alirezajhd/hotelino)
 
@@ -174,6 +119,3 @@ Project Link: [https://github.com/Alirezajhd/hotelino](https://github.com/Alirez
 
 Made with ❤️ using Flutter
 
----
-
-Made with ❤️ using Flutter
